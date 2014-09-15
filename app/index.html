@@ -39,17 +39,16 @@
 
       <section class="todo-section">
         <div class="filter-options"></div>
-        <div class="todo-item">
-          <div class="<%= priority %>">
-            <div class="todo-details">
-              <input type="checkbox" />
-              <h2><%= title %></h2>
-              <span>Due: <%= dueDate %></span>
-              <p><%= description %></p>
-
-            </div>
+        <script type="text/template" id="todo-item">
+        <div class="todo-item <%= priority %>">
+          <div class="todo-details">
+            <input type="checkbox" />
+            <h2><%= title %></h2>
+            <span>Due: <%= dueDate %></span>
+            <p><%= description %></p>
           </div>
         </div>
+        </script>
       </section>
     </main>
 
@@ -59,6 +58,11 @@
     <script src="../bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+
+        <!-- build:js scripts/moment.js -->
+        <script src="//momentjs.com/downloads/moment.min.js"></script>
+        <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
