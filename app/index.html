@@ -5,8 +5,8 @@
     <meta name="description" content="Assignment 11 for TIY-GVL-FEE-2014-Aug">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>My To-Dos</title>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+    <link rel="icon" type="image/ico" href="/favicon.ico?v=2">
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
@@ -22,17 +22,36 @@
     <!-- endbuild -->
   </head>
   <body>
+    <main>
+      <h1> My sweet to-do list</h1>
 
-    <h1> My sweet to-do list</h1>
+      <section class="form">
+        <form class="form-element">
+        <div><script type="text/template" id="form">
+          <div>Title: <input id="title" type="text" placeholder="title"></div>
+          <div>Due date: <input id="due-date" type="date"></div>
+          <div>Description: <textarea id="description"></textarea></div>
+          <div>Priority: <input type="checkbox" id="priority"></div>
+          <div><button id="update-button">make new to do item</button></div>
+        </script></div>
+        </form>
+      </section>
 
-    <section class="form">
-    </section>
+      <section class="todo-section">
+        <div class="filter-options"></div>
+        <div class="todo-item">
+          <div class="<%= priority %>">
+            <div class="todo-details">
+              <input type="checkbox" />
+              <h2><%= title %></h2>
+              <span>Due: <%= dueDate %></span>
+              <p><%= description %></p>
 
-    <section class="list-section">
-      <div class="filter-options"></div>
-      <div class="list"></div>
-    </section>
-
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->

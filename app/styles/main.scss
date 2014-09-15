@@ -7,4 +7,42 @@ body {
   background: #fafafa;
   color: #333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  * {
+    box-sizing: border-box;
+    vertical-align: top;
+  }
 }
+
+main {
+  border: solid 1px;
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: auto;
+  padding: 10px;
+  width: 600px;
+}
+
+//================FORM===================
+
+.form {
+  background: pink;
+  float: left;
+  padding: 10px;
+  width: 33%;
+}
+
+
+//===============LIST====================
+
+.todo-section {
+  background: chartreuse;
+  margin-left: 33%;
+  overflow: auto;
+  padding: 10px;
+  width: 66%;
+}
+
+.todo-item {
+  border-bottom: 1px solid;
+  }
