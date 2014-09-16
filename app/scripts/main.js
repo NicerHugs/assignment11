@@ -23,7 +23,7 @@ function editByID(id, model) {
           type: 'put',
           data: model
       }).done(function() {
-          populateTodos()
+          populateTodos();
       });
 }
 
@@ -32,22 +32,15 @@ function editByID(id, model) {
 
 function sendEditedTodo(e) {
     e.preventDefault();
-    $(this).parent().toggleClass('editable');
-    $(this).parent().prev().toggleClass('active');
     var id = $(this).parent().prev().attr('id');
-    var title = $('.editable .title').val();
-    console.log(title);
-    // var editTodoObject = {
-    //     title: $('.editable .title').val(),
-    //     dueDate: $('.editable .due-date').val(),
-    //     description: $('.editable .description').val()
-    // };
     var editTodoObject = {
-      title: "awesome",
-
+        title: $('.editable .title').val(),
+        dueDate: $('.editable .due-date').val(),
+        description: $('.editable .description').val()
     };
     console.log(id);
-
+    $(this).parent().toggleClass('editable');
+    $(this).parent().prev().toggleClass('active');
     editByID(id, editTodoObject);
 }
 
