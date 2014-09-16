@@ -38,9 +38,11 @@
       </section>
 
       <section class="todo-section">
-        <div class="filter-options"></div>
+        <div class="filter-options">
+          <button class="delete-completed" id="delete-completed">delete completed</button>
+        </div>
         <script type="text/template" id="todo-item">
-        <div class="todo-item <%= priority %>">
+        <div class="todo-item <%= priority %>" id="<%= id %>">
           <div class="todo-details">
             <input type="checkbox" />
             <h2><%= title %></h2>

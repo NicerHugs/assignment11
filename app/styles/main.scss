@@ -18,6 +18,7 @@ main {
   border: solid 1px;
   border-radius: 10px;
   margin: 20px auto;
+  min-height: 400px;
   overflow: auto;
   padding: 10px;
   width: 600px;
@@ -26,7 +27,6 @@ main {
 //================FORM===================
 
 .form {
-  background: pink;
   float: left;
   padding: 10px;
   width: 33%;
@@ -36,7 +36,6 @@ main {
 //===============LIST====================
 
 .todo-section {
-  background: chartreuse;
   margin-left: 33%;
   overflow: auto;
   padding: 10px;

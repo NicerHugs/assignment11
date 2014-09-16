@@ -42,32 +42,33 @@ $.ajax({
             });
             return todoModel;
         });
-        console.log(todoModel);
         _.each(todoModel, function(todoModel){
             renderTemplate('#todo-item', '.todo-section', todoModel);
         });
 
     });
 
-
+function markCompleted(elementClass) {
+    $(elementClass).addClass('completed');
+}
 
 function sendNewTodo(e) {
-  e.preventDefault();
-  var todoObject =  {
-      title: $('#title').val(),
-      dueDate: Date.parse($('#due-date').val()),
-      createdDate: Date.now(),
-      description: $('#description').val(),
-      priority: $('#priority').val(),
-  };
-  $.ajax({
-      url: serverURL,
-      type: 'POST',
-      data: todoObject
-  })
-      .done(function() {
-          console.log('Sent!');
-      });
+    e.preventDefault();
+    var todoObject =  {
+        title: $('#title').val(),
+        dueDate: Date.parse($('#due-date').val()),
+        createdDate: Date.now(),
+        description: $('#description').val(),
+        priority: 'priority-' + $('#priority').val(),
+    };
+    $.ajax({
+        url: serverURL,
+        type: 'POST',
+        data: todoObject
+    })
+        .done(function() {
+            console.log('Sent!');
+        });
 }
 
 function renderTemplate(templateId, location, model) {
