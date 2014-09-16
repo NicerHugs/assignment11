@@ -50,4 +50,8 @@ main {
   &.active {
     display: block;
   }
+
+  &.editable {
+    display: block;
+  }
 }

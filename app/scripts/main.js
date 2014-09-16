@@ -11,27 +11,42 @@ function editTodoItem() {
     $('.edit').on('click', function(e) {
         e.preventDefault();
         $(this).parent().toggleClass('active');
-        $(this).parent().next().toggleClass('active');
+        $(this).parent().next().addClass('editable');
     });
 }
 
-function editByID(id) {
+
+
+function editByID(id, model) {
      $.ajax({
           url: serverURL + '/' + id,
           type: 'put',
-          data: editTodoObject
+          data: model
       }).done(function() {
-          console.log('success');
+          populateTodos()
       });
 }
 
 
+
+
 function sendEditedTodo(e) {
     e.preventDefault();
-    $(this).parent().toggleClass('active');
+    $(this).parent().toggleClass('editable');
     $(this).parent().prev().toggleClass('active');
+    var id = $(this).parent().prev().attr('id');
+    // var editTodoObject = {
+    //     title: $('.editable .title').val(),
+    //     dueDate: $('.editable .due-date').val(),
+    //     description: $('.editable .description').val()
+    // };
+    var editTodoObject = {
+      title: "awesome",
+      
+    };
+    console.log(id);
 
-    // editByID("5417ae1e84d2ee0200000208");
+    editByID(id, editTodoObject);
 }
 
 
@@ -66,6 +81,7 @@ function populateTodos() {
           markCompleted();
           editTodoItem();
           $('#update-button').on('click', sendEditedTodo);
+
       });
 }
 
@@ -81,11 +97,6 @@ $('#delete-completed').on('click', function(e) {
     // populateTodos();
 });
 
-var editToDoObject = {
-    title: $('.active .title').val(),
-    dueDate: $('.active .dueDate').val(),
-    description: $('.active .description').val
-};
 
 
 
@@ -131,5 +142,3 @@ renderTemplate('#form', '.form-element');
 
 
 $('#submit-button').on('click', sendNewTodo);
-
-$('#update-button').on('click', sendUpdatedTodo);
