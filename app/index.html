@@ -27,6 +27,7 @@
 
       <section class="form">
         <form class="form-element">
+          <h2>Add a new todo item</h2>
         <div><script type="text/template" id="form">
           <div>Title: <input id="title" type="text" placeholder="title"></div>
           <div>Due date: <input id="due-date" type="date"></div>
@@ -43,7 +44,7 @@
         <script type="text/template" id="todo-item">
         <div class="todo-item active" id="<%= id %>">
             <input class="completed-checkbox" type="checkbox" />
-            <div>
+            <div class="item-details">
             <h2><%= title %></h2>
             <span>Due: <%= dueDate %></span>
             <p><%= description %></p>
@@ -51,9 +52,9 @@
             </div>
         </div>
         <form class="todo-item">
-          <div>Title: <input class="title" type="text" value="<%= title %>"></div>
-          <div>Due date: <input class="due-date" type="date" value="<%= moment(dueDate).format('YYYY-MM-DD') %>"></div>
-          <div>Description: <textarea class="description"><%= description %></textarea></div>
+          <div><span>Title: </span><input class="title" type="text" value="<%= title %>"></div>
+          <div><span>Due date: </span><input class="due-date" type="date" value="<%= moment(dueDate).format('YYYY-MM-DD') %>"></div>
+          <div><span>Description: </span><textarea class="description"><%= description %></textarea></div>
           <button id="update-button">update</button>
         </form>
 
