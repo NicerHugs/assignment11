@@ -1,7 +1,5 @@
 var serverURL = '//tiny-pizza-server.herokuapp.com/collections/NicerHugs';
 
-var _id = "54174b6a84d2ee0200000057";
-
 
 function markCompleted() {
     $('.completed-checkbox').on('click', function() {
@@ -65,22 +63,15 @@ function deleteByID(id) {
     });
 }
 
-// $.ajax({
-//     url: serverURL + _id,
-//     type: 'delete'
-// }).done(function() {
-//     console.log('deleted')
-// });
-
 
 function sendNewTodo(e) {
     e.preventDefault();
     var todoObject =  {
         title: $('#title').val(),
-        dueDate: Date.parse($('#due-date').val()),
+        dueDate: moment(Date.parse($('#due-date').val())).format("MMM D, YYYY"),
         createdDate: Date.now(),
         description: $('#description').val(),
-        priority: 'priority-' + $('#priority').val(),
+        priority: $('#priority').val(),
     };
     $.ajax({
         url: serverURL,

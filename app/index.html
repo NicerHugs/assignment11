@@ -42,12 +42,19 @@
           <button class="delete-completed" id="delete-completed">delete completed</button>
         </div>
         <script type="text/template" id="todo-item">
-        <div class="todo-item <%= priority %>" id="<%= id %>">
+        <div class="todo-item priority-<%= priority %>" id="<%= id %>">
             <input class="completed-checkbox" type="checkbox" />
             <h2><%= title %></h2>
             <span>Due: <%= dueDate %></span>
             <p><%= description %></p>
         </div>
+        <form class="todo-item">
+          <div>Title: <input id="title" type="text" value="<%= title %>"></div>
+          <div>Due date: <input id="due-date" type="date" value="<%= moment(1409630400000).format('YYYY-MM-DD') %>"></div>
+          <div>Description: <textarea id="description"><%= description %></textarea></div>
+          <div>Priority: <input type="checkbox" id="priority" checked="<%= priority %>"></div>
+          <div><button id="update-button">submit changes</button></div>
+        </form>
         </script>
       </section>
     </main>
