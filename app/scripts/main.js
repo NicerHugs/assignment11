@@ -7,6 +7,34 @@ function markCompleted() {
     });
 }
 
+function editTodoItem() {
+    $('.edit').on('click', function(e) {
+        e.preventDefault();
+        $(this).parent().toggleClass('active');
+        $(this).parent().next().toggleClass('active');
+    });
+}
+
+function editByID(id) {
+     $.ajax({
+          url: serverURL + '/' + id,
+          type: 'put',
+          data: editTodoObject
+      }).done(function() {
+          console.log('success');
+      });
+}
+
+
+function sendEditedTodo(e) {
+    e.preventDefault();
+    $(this).parent().toggleClass('active');
+    $(this).parent().prev().toggleClass('active');
+
+    // editByID("5417ae1e84d2ee0200000208");
+}
+
+
 
 function populateTodos() {
     $.ajax({
@@ -21,8 +49,7 @@ function populateTodos() {
                   title: todoDatum.title,
                   dueDate: todoDatum.dueDate,
                   createdDate: todoDatum.createdDate,
-                  description: todoDatum.description,
-                  priority: todoDatum.priority
+                  description: todoDatum.description
               };
               _.defaults(todoModel, {
                   title: "Title",
@@ -37,6 +64,8 @@ function populateTodos() {
               renderTemplate('#todo-item', '.todo-section', todoModel);
           });
           markCompleted();
+          editTodoItem();
+          $('#update-button').on('click', sendEditedTodo);
       });
 }
 
@@ -48,9 +77,16 @@ $('#delete-completed').on('click', function(e) {
     $('.completed').each(function () {
         completedIDs.push(this.id);
     });
-    _.each(completedIDs, deleteByID)
+    _.each(completedIDs, deleteByID);
     // populateTodos();
 });
+
+var editToDoObject = {
+    title: $('.active .title').val(),
+    dueDate: $('.active .dueDate').val(),
+    description: $('.active .description').val
+};
+
 
 
 
@@ -71,8 +107,7 @@ function sendNewTodo(e) {
         dueDate: moment(Date.parse($('#due-date').val())).format("MMM D, YYYY"),
         createdDate: Date.now(),
         description: $('#description').val(),
-        priority: $('#priority').val(),
-    };
+      };
     $.ajax({
         url: serverURL,
         type: 'POST',
@@ -93,4 +128,8 @@ renderTemplate('#form', '.form-element');
 
 
 
-$('#update-button').on('click', sendNewTodo);
+
+
+$('#submit-button').on('click', sendNewTodo);
+
+$('#update-button').on('click', sendUpdatedTodo);

@@ -7,6 +7,7 @@ body {
   background: #fafafa;
   color: #333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
 
   * {
     box-sizing: border-box;
@@ -44,4 +45,9 @@ main {
 
 .todo-item {
   border-bottom: 1px solid;
+  display: none;
+
+  &.active {
+    display: block;
   }
+}
