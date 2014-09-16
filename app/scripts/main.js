@@ -35,6 +35,8 @@ function sendEditedTodo(e) {
     $(this).parent().toggleClass('editable');
     $(this).parent().prev().toggleClass('active');
     var id = $(this).parent().prev().attr('id');
+    var title = $('.editable .title').val();
+    console.log(title);
     // var editTodoObject = {
     //     title: $('.editable .title').val(),
     //     dueDate: $('.editable .due-date').val(),
@@ -42,7 +44,7 @@ function sendEditedTodo(e) {
     // };
     var editTodoObject = {
       title: "awesome",
-      
+
     };
     console.log(id);
 
