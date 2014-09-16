@@ -19,6 +19,13 @@ var _id = "54174b6a84d2ee0200000057";
 // });
 
 
+function markCompleted() {
+    $('.completed-checkbox').on('click', function() {
+        $(this).parent().toggleClass('completed');
+    });
+}
+
+
 $.ajax({
     url: serverURL,
     type: 'get'
@@ -45,12 +52,10 @@ $.ajax({
         _.each(todoModel, function(todoModel){
             renderTemplate('#todo-item', '.todo-section', todoModel);
         });
-
+        markCompleted();
     });
 
-function markCompleted(elementClass) {
-    $(elementClass).addClass('completed');
-}
+
 
 function sendNewTodo(e) {
     e.preventDefault();
@@ -80,4 +85,8 @@ function renderTemplate(templateId, location, model) {
 renderTemplate('#form', '.form-element');
 
 
+
 $('#update-button').on('click', sendNewTodo);
+$('#delete-completed').on('click', function(e) {
+    e.preventDefault();
+});
