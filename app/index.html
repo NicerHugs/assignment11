@@ -43,10 +43,12 @@
         <script type="text/template" id="todo-item">
         <div class="todo-item active" id="<%= id %>">
             <input class="completed-checkbox" type="checkbox" />
+            <div>
             <h2><%= title %></h2>
             <span>Due: <%= dueDate %></span>
             <p><%= description %></p>
             <a href="#" class="edit">edit</a>
+            </div>
         </div>
         <form class="todo-item">
           <div>Title: <input class="title" type="text" value="<%= title %>"></div>
@@ -54,6 +56,7 @@
           <div>Description: <textarea class="description"><%= description %></textarea></div>
           <button id="update-button">update</button>
         </form>
+
         </script>
       </section>
     </main>

@@ -54,6 +54,13 @@ main {
   &.editable {
     display: block;
   }
+
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+
+  }
 }
 
 .completed {

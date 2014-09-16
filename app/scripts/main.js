@@ -10,8 +10,8 @@ function markCompleted() {
 function editTodoItem() {
     $('.edit').on('click', function(e) {
         e.preventDefault();
-        $(this).parent().toggleClass('active');
-        $(this).parent().next().addClass('editable');
+        $(this).parent().parent().toggleClass('active');
+        $(this).parent().parent().next().addClass('editable');
     });
 }
 
@@ -38,7 +38,6 @@ function sendEditedTodo(e) {
         dueDate: $('.editable .due-date').val(),
         description: $('.editable .description').val()
     };
-    console.log(id);
     $(this).parent().toggleClass('editable');
     $(this).parent().prev().toggleClass('active');
     editByID(id, editTodoObject);
