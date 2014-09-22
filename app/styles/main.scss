@@ -3,6 +3,9 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+
+$border-color: #999;
+
 body {
   background: #fafafa;
   color: #333;
@@ -16,7 +19,7 @@ body {
 }
 
 main {
-  border: solid 1px;
+  border: solid 1px $border-color;
   border-radius: 10px;
   margin: 20px auto;
   min-height: 400px;
@@ -29,7 +32,6 @@ h1 {
   text-align: center;
 }
 
-$border-color: #999;
 
 //================FORM===================
 

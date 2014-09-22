@@ -60,13 +60,6 @@ function populateTodos() {
                   createdDate: todoDatum.createdDate,
                   description: todoDatum.description
               };
-              _.defaults(todoModel, {
-                  title: "Title",
-                  dueDate: Date.now(),
-                  createdDate: Date.now(),
-                  description: "description",
-                  priority: "off"
-              });
               return todoModel;
           });
           _.each(todoModel, function(todoModel){
@@ -113,6 +106,12 @@ function sendNewTodo(e) {
         createdDate: Date.now(),
         description: $('#description').val(),
       };
+      _.defaults(todoObject, {
+          title: "<Title?",
+          dueDate: Date.now(),
+          createdDate: Date.now(),
+          description: ""
+      });
     $.ajax({
         url: serverURL,
         type: 'POST',
