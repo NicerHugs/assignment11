@@ -2,11 +2,13 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta name="description" content="Assignment 11 for TIY-GVL-FEE-2014-Aug">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>yeoman example</title>
+    <title>My To-Dos</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+
+    <link rel="icon" type="image/ico" href="/favicon.ico?v=2">
     <link rel="stylesheet" href="styles/vendor.css">
 
     <link rel="stylesheet" href="styles/main.css">
@@ -14,31 +16,52 @@
     <script src="scripts/vendor/modernizr.js"></script>
   </head>
   <body>
+    <main>
+      <h1> My sweet to-do list</h1>
 
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Normalize CSS</li>
+      <section class="form">
+        <form class="form-element">
+          <h2>Add a new todo item</h2>
+        <div><script type="text/template" id="form">
+          <div>Title: <input id="title" type="text" placeholder="title"></div>
+          <div>Due date: <input id="due-date" type="date"></div>
+          <div>Description: <textarea id="description"></textarea></div>
+          <div><button id="submit-button">submit</button></div>
+        </script></div>
+        </form>
+      </section>
 
-        <li>Sass</li>
+      <section class="todo-section">
+        <div class="filter-options">
+          <button class="delete-completed" id="delete-completed">delete completed</button>
+        </div>
+        <script type="text/template" id="todo-item">
+        <div class="todo-item active" id="<%= id %>">
+            <input class="completed-checkbox" type="checkbox" />
+            <div class="item-details">
+            <h2><%= title %></h2>
+            <span>Due: <%= dueDate %></span>
+            <p><%= description %></p>
+            <a href="#" class="edit">edit</a>
+            </div>
+        </div>
+        <form class="todo-item">
+          <div><span>Title: </span><input class="title" type="text" value="<%= title %>"></div>
+          <div><span>Due date: </span><input class="due-date" type="date" value="<%= moment(dueDate).format('YYYY-MM-DD') %>"></div>
+          <div><span>Description: </span><textarea class="description"><%= description %></textarea></div>
+          <button id="update-button">update</button>
+        </form>
 
-
-        <li>Modernizr</li>
-
-
-        <li>Bourbon & Neat</li>
-
-
-        <li>UnderscoreJS</li>
-
-      </ul>
-      <p>Don't forget to update your readme file!!</p>
-    </div>
+        </script>
+      </section>
+    </main>
 
     <script src="scripts/vendor.js"></script>
 
+
+        <script src="//momentjs.com/downloads/moment.min.js"></script>
+
+
         <script src="scripts/main.js"></script>
-</body>
+  </body>
 </html>
